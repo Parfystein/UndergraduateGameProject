@@ -2025,7 +2025,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5617132512927159185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.04, y: -0.67, z: 0}
+  m_LocalPosition: {x: 7.23, y: -0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8173,6 +8173,7 @@ MonoBehaviour:
   - {fileID: 5325721965994170703}
   - {fileID: 2262296641864311245}
   enemiesInRoom: []
+  roomName: 
 --- !u!60 &6056703762915683522
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8258,7 +8259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9207632809502254270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.83, y: -8.49, z: 0}
+  m_LocalPosition: {x: 1.36, y: -7.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
