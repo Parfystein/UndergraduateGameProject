@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Enemy Behaviors/Chase Player")]
+public class ChasePlayerBehavior : EnemyBehavior
+{
+    public float moveSpeed = 2f;
+
+    public override void Execute(EnemyAIController controller)
+    {
+        if (controller.playerTransform == null) return;
+
+        float distance = Vector2.Distance(controller.transform.position, controller.playerTransform.position);
+        if (distance < controller.detectionRadius)
+        {
+            Vector2 direction = (controller.playerTransform.position - controller.transform.position).normalized;
+            controller.transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
+        }
+    }
+}
