@@ -101,6 +101,7 @@ public class BSPLevelGenerator : MonoBehaviour {
     void InstantiateRooms() 
     {
         bool firstRoomFound = false;
+        int roomIndex =1;
 
         foreach (var leaf in leaves) {
             GameObject roomGO = Instantiate(
@@ -111,6 +112,7 @@ public class BSPLevelGenerator : MonoBehaviour {
 
             var room = roomGO.GetComponent<Room>();
             room.center = new Vector2Int((int)roomGO.transform.position.x, (int)roomGO.transform.position.y);
+            room.roomName = $"Room {roomIndex++}";
             roomInstances.Add(room);
 
             leaf.roomPosition = room.center;

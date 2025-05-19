@@ -18,6 +18,8 @@ public class Room : MonoBehaviour
     [HideInInspector]
     public List<GameObject> enemiesInRoom = new List<GameObject>();
 
+    public string roomName;
+
     private void Start()
     {
         roomBoundsCollider = GetComponent<PolygonCollider2D>();

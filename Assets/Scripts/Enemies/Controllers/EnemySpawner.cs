@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Transform spawnPoint = shuffled[i];
             GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity, transform);
 
             room.enemiesInRoom.Add(enemy);
         }

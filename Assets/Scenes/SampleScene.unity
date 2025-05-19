@@ -254,7 +254,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefabs:
-  - {fileID: 6265278101192628724, guid: 995b0ee47f046694681fd06d318f31fc, type: 3}
+  - {fileID: 6265278101192628724, guid: 9b7e2512b4c02ad419d60db9caad0749, type: 3}
+  - {fileID: 6265278101192628724, guid: af4a05dad1e57c14ba359a6b68cfa26b, type: 3}
+  - {fileID: 6265278101192628724, guid: 50ec73b74a932d247ae006d238dbec13, type: 3}
+  - {fileID: 6265278101192628724, guid: bb9d916ccc7705c42988633e88672d5b, type: 3}
+  - {fileID: 6265278101192628724, guid: e9abdb1d3188c5948bd8c63de84919c8, type: 3}
+  - {fileID: 6265278101192628724, guid: 17b83b4822f60124aa230a19aa9236f9, type: 3}
+  - {fileID: 6265278101192628724, guid: dc3bb798759fe344aa19b63a4b735bd5, type: 3}
+  - {fileID: 6265278101192628724, guid: 8eb47522809453742a04da0ef3bb9ea7, type: 3}
+  - {fileID: 6265278101192628724, guid: c51e9ed6ee92d5743991587dcac4dcf1, type: 3}
+  - {fileID: 6265278101192628724, guid: e745e75d59f2fdc4a837a25b820f0b7b, type: 3}
+  - {fileID: 6265278101192628724, guid: f8752ca466bd2bb4680ea46d403b212c, type: 3}
+  - {fileID: 6265278101192628724, guid: d23ac497cbf9bbb44970b74a891a3ee4, type: 3}
+  - {fileID: 6265278101192628724, guid: bd848e3f15457a546a0f42c4c34b619c, type: 3}
+  - {fileID: 6265278101192628724, guid: ea9bc6841bba2e241bf4cb035dc09faa, type: 3}
+  - {fileID: 6265278101192628724, guid: f0630f6375aeda74bbb9372f9cf6f2f2, type: 3}
   playerPrefab: {fileID: 7489885377612582556, guid: 6dfce85afb610ec4d86e711885a2bfb5, type: 3}
   mapWidth: 150
   mapHeight: 150

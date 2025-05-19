@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
     void TryMove()
     {
+        if (GetComponent<PlayerKnockback>().IsKnockedBack)
+            return;
+            
         Vector2 movement = moveInput * speed * Time.fixedDeltaTime;
 
         if (movement == Vector2.zero)
@@ -48,10 +51,6 @@ public class PlayerMovement : MonoBehaviour
         if (hits == 0)
         {
             playerRigidBody.MovePosition(playerRigidBody.position + movement);
-        }
-        else
-        {
-            Debug.Log("Blocked by: " + castResults[0].collider.name);
         }
     }
 

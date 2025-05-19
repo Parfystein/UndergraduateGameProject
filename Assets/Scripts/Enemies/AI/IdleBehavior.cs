@@ -11,7 +11,7 @@ public class IdleBehavior : EnemyBehavior
         float distance = Vector2.Distance(controller.transform.position, controller.playerTransform.position);
         if (distance < controller.detectionRadius)
         {
-            Debug.Log($"{controller.name} has spotted the player!");
+           // Debug.Log($"{controller.name} has spotted the player!");
         }
     }
 }

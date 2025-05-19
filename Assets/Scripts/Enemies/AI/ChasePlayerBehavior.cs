@@ -16,6 +16,13 @@ public class ChasePlayerBehavior : EnemyBehavior
         {
             Vector2 direction = (controller.playerTransform.position - controller.transform.position).normalized;
             controller.transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
+
+
+            SpriteRenderer sr = controller.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.flipX = direction.x < 0f; 
+            }
         }
     }
 }
