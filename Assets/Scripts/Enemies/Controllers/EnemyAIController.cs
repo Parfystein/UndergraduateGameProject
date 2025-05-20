@@ -8,7 +8,7 @@ public class EnemyAIController : MonoBehaviour
     public EnemyBehavior[] behaviors;
 
     [HideInInspector] public Transform playerTransform;
-    public float detectionRadius = 5f;
+    public float detectionRadius = 6f;
 
     void Start()
     {

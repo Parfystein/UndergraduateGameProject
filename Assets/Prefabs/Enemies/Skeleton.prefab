@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1200887286684333882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9150933129401716438}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9150933129401716438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200887286684333882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.248, y: 0.469, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4417245621332250240}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4147768555157243383
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,7 +48,7 @@ GameObject:
   - component: {fileID: 5980698750750853365}
   - component: {fileID: 559412786050745550}
   - component: {fileID: 1653249422637081176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -35,7 +66,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.0058483, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9150933129401716438}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -80,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: -1237207673
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2002161687, guid: eefb4a3389c2f01409906eaba9d6d657, type: 3}
+  m_Sprite: {fileID: -645893372, guid: bed825738f2db654f9df2780c04e99c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,10 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviors:
-  - {fileID: 11400000, guid: 4367e327879a4124b9eae012f8b037da, type: 2}
+  - {fileID: 11400000, guid: 1e878490f232c214fb55a15dd5e2b82d, type: 2}
   - {fileID: 11400000, guid: fc4d3aef7ed6afd49a4a9ea3a1acc286, type: 2}
+  - {fileID: 11400000, guid: 44939c4dbcb1f444094f0946c226bc97, type: 2}
   playerTransform: {fileID: 0}
-  detectionRadius: 5
+  detectionRadius: 10
 --- !u!58 &7967722393379552056
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -121,9 +154,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00801573, y: -0.020434277}
+  m_Offset: {x: -0.105685055, y: 0.03204298}
   serializedVersion: 2
-  m_Radius: 0.056242034
+  m_Radius: 0.33903617
 --- !u!114 &-2200779965111866330
 MonoBehaviour:
   m_ObjectHideFlags: 0
