@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e5be4d0d7d310e4a80d9e5cc0e970b4
+guid: 1c11f3f6e07e9d146ac41296735df105
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -44,10 +44,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,12 +105,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPA_Enemy_Right_0
+      name: SlimeIdle_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 4
-        width: 32
+        x: 38
+        y: 0
+        width: 47
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -119,19 +119,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86908db82f6c8fb4a817126c6d2cb4e3
-      internalID: -1584689330
+      spriteID: ddb9893f040274a4ba861b36a0247c27
+      internalID: -808560324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPA_Enemy_Right_1
+      name: SlimeIdle_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 4
-        width: 32
+        x: 166
+        y: 0
+        width: 47
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,19 +140,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16089be4574fd9d49932619118396cf3
-      internalID: -1689577940
+      spriteID: 5f15ba2ecb853ab4a9df4e0785a6b3d4
+      internalID: 814174351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPA_Enemy_Right_2
+      name: SlimeIdle_2
       rect:
         serializedVersion: 2
-        x: 86
-        y: 4
-        width: 32
+        x: 294
+        y: 0
+        width: 47
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -161,19 +161,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c3e2fe6f705ea5479917bb1f39a3831
-      internalID: 594510190
+      spriteID: 87df5ec28159dba4a96af0d6b6dffc08
+      internalID: 635227065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPA_Enemy_Right_3
+      name: SlimeIdle_3
       rect:
         serializedVersion: 2
-        x: 124
-        y: 4
-        width: 32
+        x: 422
+        y: 0
+        width: 47
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -182,19 +182,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81154e0e28d9a2641b93b4e01206679d
-      internalID: -677539770
+      spriteID: 7b2769a99d1e821448c784dc5420151b
+      internalID: 1905640403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPA_Enemy_Right_4
+      name: SlimeIdle_4
       rect:
         serializedVersion: 2
-        x: 162
-        y: 4
-        width: 32
+        x: 550
+        y: 0
+        width: 47
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -203,19 +203,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 583b0c4f701da7447b93427921409e4c
-      internalID: 1459120503
+      spriteID: 4f744fd7077ad664794bb7a2330f23ad
+      internalID: -1775817532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPA_Enemy_Right_5
+      name: SlimeIdle_5
       rect:
         serializedVersion: 2
-        x: 200
-        y: 4
-        width: 32
+        x: 678
+        y: 0
+        width: 47
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -224,8 +224,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ce7c06497caf5b4484fa76ea59f5be4
-      internalID: -1590181066
+      spriteID: 94ddd66176b3ac34ca803ea672f249d9
+      internalID: -49758999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeIdle_6
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 0
+        width: 47
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e19d7bd1651079543b29c79d8e9cd3e4
+      internalID: 1862055343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeIdle_7
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ff3f3006bf5c494b8086ef909243860
+      internalID: -1554660521
       vertices: []
       indices: 
       edges: []
@@ -241,12 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SPA_Enemy_Right_0: -1584689330
-      SPA_Enemy_Right_1: -1689577940
-      SPA_Enemy_Right_2: 594510190
-      SPA_Enemy_Right_3: -677539770
-      SPA_Enemy_Right_4: 1459120503
-      SPA_Enemy_Right_5: -1590181066
+      SlimeIdle_0: -808560324
+      SlimeIdle_1: 814174351
+      SlimeIdle_2: 635227065
+      SlimeIdle_3: 1905640403
+      SlimeIdle_4: -1775817532
+      SlimeIdle_5: -49758999
+      SlimeIdle_6: 1862055343
+      SlimeIdle_7: -1554660521
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -4,14 +4,14 @@ using UnityEngine;
 public class ChasePlayerBehavior : EnemyBehavior
 {
     public float moveSpeed = 2f;
-    public float stopDistance = 0f;
+    public float range = 0f;
 
     public override void Execute(EnemyAIController controller)
     {
         if (controller.playerTransform == null) return;
 
         float distance = Vector2.Distance(controller.transform.position, controller.playerTransform.position);
-        if (distance < controller.detectionRadius && distance > stopDistance)
+        if (distance < controller.detectionRadius && distance > range)
         {
             Vector2 direction = (controller.playerTransform.position - controller.transform.position).normalized;
             controller.transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);

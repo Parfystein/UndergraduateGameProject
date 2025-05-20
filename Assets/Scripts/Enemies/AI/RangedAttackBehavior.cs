@@ -17,7 +17,7 @@ public class RangedAttackBehavior : EnemyBehavior
         if (controller.playerTransform == null || projectilePrefab == null) return;
 
         float distance = Vector2.Distance(controller.transform.position, controller.playerTransform.position);
-        float stopDistance = GetStopDistanceFromChaseBehavior(controller);
+        float stopDistance = GetRangeFromChaseBehavior(controller);
 
         if (!shootTimers.ContainsKey(controller.gameObject))
         {
@@ -72,12 +72,12 @@ public class RangedAttackBehavior : EnemyBehavior
 
     }
 
-    private float GetStopDistanceFromChaseBehavior(EnemyAIController controller)
+    private float GetRangeFromChaseBehavior(EnemyAIController controller)
     {
         foreach (var behavior in controller.behaviors)
         {
             if (behavior is ChasePlayerBehavior chase)
-                return chase.stopDistance;
+                return chase.range;
         }
         return 4f; 
     }
