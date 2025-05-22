@@ -10620,6 +10620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0}
   connectedRooms: []
+  needsToBeCleared: 1
   portalPrefab: {fileID: 7864479212853589171, guid: 4d8da6acc2df3f442b11290cf9bba6f3, type: 3}
   isCleared: 0
   roomBoundsCollider: {fileID: 0}

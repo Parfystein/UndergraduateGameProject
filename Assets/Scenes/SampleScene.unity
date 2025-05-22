@@ -372,11 +372,22 @@ MonoBehaviour:
   - {fileID: 6265278101192628724, guid: bd848e3f15457a546a0f42c4c34b619c, type: 3}
   - {fileID: 6265278101192628724, guid: ea9bc6841bba2e241bf4cb035dc09faa, type: 3}
   - {fileID: 6265278101192628724, guid: f0630f6375aeda74bbb9372f9cf6f2f2, type: 3}
+  bossRoomPrefabs:
+  - {fileID: 6265278101192628724, guid: 18041f803fbbe2c49aae173b3cdf64eb, type: 3}
+  powerUpRoomPrefabs:
+  - {fileID: 6265278101192628724, guid: 2af7e417329dba44997d6a1e63e71e94, type: 3}
+  startingRoomPrefabs:
+  - {fileID: 6265278101192628724, guid: 99c54f29cd006554c97c9a570958558a, type: 3}
   playerPrefab: {fileID: 7489885377612582556, guid: 6dfce85afb610ec4d86e711885a2bfb5, type: 3}
-  mapWidth: 150
-  mapHeight: 150
+  numberOfBossRooms: 1
+  numberOfPowerUpRooms: 1
+  bossRooms: []
+  powerUpRooms: []
+  startingRoom: {fileID: 0}
+  mapWidth: 300
+  mapHeight: 300
   minRoomSize: 20
-  minRoomCount: 7
+  minRoomCount: 10
   enemySpawner: {fileID: 304763602}
   minEnemiesPerRoom: 2
   maxEnemiesPerRoom: 4

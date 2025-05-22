@@ -4,7 +4,9 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public Vector2Int center; 
-    public List<Room> connectedRooms = new List<Room>(); 
+    public List<Room> connectedRooms = new List<Room>();
+
+    public bool needsToBeCleared;
 
     [Header("Portal Settings")]
     public GameObject portalPrefab; 
@@ -18,7 +20,7 @@ public class Room : MonoBehaviour
     [HideInInspector]
     public List<GameObject> enemiesInRoom = new List<GameObject>();
 
-    public string roomName;
+    [HideInInspector]public string roomName;
 
     private void Start()
     {

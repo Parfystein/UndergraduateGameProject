@@ -60,7 +60,9 @@ public class Portal : MonoBehaviour
         {
             GameObject newButton = Instantiate(buttonTemplate.gameObject, buttonTemplate.parent);
             newButton.SetActive(true);
-            string label = targetRoom.isCleared ? $"{targetRoom.roomName} (Completed)" : targetRoom.roomName;
+            string label = (targetRoom.needsToBeCleared && targetRoom.isCleared)
+            ? $"{targetRoom.roomName} (Completed)"
+            : targetRoom.roomName;
             newButton.GetComponentInChildren<TMP_Text>().text = label;
 
             newButton.GetComponent<Button>().onClick.AddListener(() =>

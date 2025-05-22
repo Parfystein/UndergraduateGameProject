@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -6,7 +5,17 @@ using UnityEngine.Tilemaps;
 public class BSPLevelGenerator : MonoBehaviour {
     [Header("Room Prefabs")]
     public GameObject[] roomPrefabs;
+    public GameObject[] bossRoomPrefabs;
+    public GameObject[] powerUpRoomPrefabs;
+    public GameObject[] startingRoomPrefabs;
     public GameObject playerPrefab;
+
+    [Header("Special Room Settings")]
+    public int numberOfBossRooms = 1;
+    public int numberOfPowerUpRooms = 1;
+    [HideInInspector] public List<Room> bossRooms = new List<Room>();
+    [HideInInspector] public List<Room> powerUpRooms = new List<Room>();
+    [HideInInspector] public Room startingRoom;
 
     [Header("Map Settings")]
     public int mapWidth = 100;
@@ -14,14 +23,14 @@ public class BSPLevelGenerator : MonoBehaviour {
     public int minRoomSize = 20;
     public int minRoomCount = 7;
 
-    private BSPNode rootNode;
-    private List<BSPNode> leaves;
-    private List<Room> roomInstances = new List<Room>();
-
     [Header("Enemy Settings")]
     public EnemySpawner enemySpawner;
     public int minEnemiesPerRoom = 1;
     public int maxEnemiesPerRoom = 4;
+
+    private BSPNode rootNode;
+    private List<BSPNode> leaves;
+    private List<Room> roomInstances = new List<Room>();
 
     void Start() 
     {
@@ -57,7 +66,6 @@ public class BSPLevelGenerator : MonoBehaviour {
 
             attempts++;
         }
-        
     }
 
     bool SplitNode(BSPNode node) {
@@ -98,37 +106,104 @@ public class BSPLevelGenerator : MonoBehaviour {
         return true;
     }
 
-    void InstantiateRooms() 
+    void InstantiateRooms()
+{
+    int roomIndex = 1;
+
+    if (startingRoomPrefabs == null || startingRoomPrefabs.Length == 0)
     {
-        bool firstRoomFound = false;
-        int roomIndex =1;
+        Debug.LogError("No starting room prefabs assigned.");
+        return;
+    }
 
-        foreach (var leaf in leaves) {
-            GameObject roomGO = Instantiate(
-                roomPrefabs[Random.Range(0, roomPrefabs.Length)],
-                new Vector3(leaf.area.x + leaf.area.width / 2, leaf.area.y + leaf.area.height / 2, 0),
-                Quaternion.identity
-            );
+    if (leaves.Count < 1)
+    {
+        Debug.LogError("No BSP leaves available to place rooms.");
+        return;
+    }
 
-            var room = roomGO.GetComponent<Room>();
-            room.center = new Vector2Int((int)roomGO.transform.position.x, (int)roomGO.transform.position.y);
-            room.roomName = $"Room {roomIndex++}";
-            roomInstances.Add(room);
+    BSPNode startingLeaf = leaves[leaves.Count - 1];
+    GameObject startingPrefab = startingRoomPrefabs[Random.Range(0, startingRoomPrefabs.Length)];
+    GameObject startingGO = Instantiate(startingPrefab, GetRoomPosition(startingLeaf), Quaternion.identity);
 
-            leaf.roomPosition = room.center;
+    startingRoom = startingGO.GetComponent<Room>();
+    startingRoom.center = new Vector2Int((int)startingGO.transform.position.x, (int)startingGO.transform.position.y);
+    startingRoom.roomName = "Starting Room";
 
-            if (!firstRoomFound && playerPrefab != null) 
-            {
-                 GameObject player = Instantiate(playerPrefab, roomGO.transform.position, Quaternion.identity);
+    roomInstances.Add(startingRoom);
+    startingLeaf.roomPosition = startingRoom.center;
+
+    if (playerPrefab != null)
+    {
+        GameObject player = Instantiate(playerPrefab, startingGO.transform.position, Quaternion.identity);
+
+        CameraConfinerHandler confinerHandler = Camera.main.GetComponent<CameraConfinerHandler>();
+        if (confinerHandler != null)
+            confinerHandler.SetConfinerBounds(startingRoom.GetComponent<PolygonCollider2D>());
+    }
+
+    int totalLeaves = leaves.Count;
+    int availableLeaves = totalLeaves - 1;
+    int totalSpecialRooms = numberOfBossRooms + numberOfPowerUpRooms;
+    totalSpecialRooms = Mathf.Min(totalSpecialRooms, availableLeaves);
+
+    List<BSPNode> reservedLeaves = leaves.GetRange(0, totalSpecialRooms);
+    int normalStart = totalSpecialRooms;
+    int normalCount = availableLeaves - totalSpecialRooms;
+
+    List<BSPNode> normalLeaves = (normalCount > 0)
+        ? leaves.GetRange(normalStart, normalCount)
+        : new List<BSPNode>();
+
+    foreach (var leaf in normalLeaves)
+    {
+        if (leaf == startingLeaf) continue;
+
+        GameObject prefab = roomPrefabs[Random.Range(0, roomPrefabs.Length)];
+        GameObject roomGO = Instantiate(prefab, GetRoomPosition(leaf), Quaternion.identity);
+
+        Room room = roomGO.GetComponent<Room>();
+        room.center = new Vector2Int((int)roomGO.transform.position.x, (int)roomGO.transform.position.y);
+        room.roomName = $"Room {roomIndex++}";
+        roomInstances.Add(room);
+        leaf.roomPosition = room.center;
+    }
+
+    int leafIndex = 0;
+
+    for (int i = 0; i < numberOfBossRooms && leafIndex < reservedLeaves.Count; i++, leafIndex++)
+    {
+        BSPNode leaf = reservedLeaves[leafIndex];
+        GameObject prefab = bossRoomPrefabs[Random.Range(0, bossRoomPrefabs.Length)];
+        GameObject roomGO = Instantiate(prefab, GetRoomPosition(leaf), Quaternion.identity);
+
+        Room room = roomGO.GetComponent<Room>();
+        room.center = new Vector2Int((int)roomGO.transform.position.x, (int)roomGO.transform.position.y);
+        room.roomName = "Boss Room";
+        bossRooms.Add(room);
+        roomInstances.Add(room);
+        leaf.roomPosition = room.center;
+    }
+
+    for (int i = 0; i < numberOfPowerUpRooms && leafIndex < reservedLeaves.Count; i++, leafIndex++)
+    {
+        BSPNode leaf = reservedLeaves[leafIndex];
+        GameObject prefab = powerUpRoomPrefabs[Random.Range(0, powerUpRoomPrefabs.Length)];
+        GameObject roomGO = Instantiate(prefab, GetRoomPosition(leaf), Quaternion.identity);
+
+        Room room = roomGO.GetComponent<Room>();
+        room.center = new Vector2Int((int)roomGO.transform.position.x, (int)roomGO.transform.position.y);
+        room.roomName = $"Power-Up Room {i + 1}";
+        powerUpRooms.Add(room);
+        roomInstances.Add(room);
+        leaf.roomPosition = room.center;
+    }
+}
 
 
-                CameraConfinerHandler confinerHandler = Camera.main.GetComponent<CameraConfinerHandler>();
-                if (confinerHandler != null)
-                    confinerHandler.SetConfinerBounds(room.GetComponent<PolygonCollider2D>());
-
-                firstRoomFound = true;
-            }
-        }
+    Vector3 GetRoomPosition(BSPNode leaf)
+    {
+        return new Vector3(leaf.area.x + leaf.area.width / 2, leaf.area.y + leaf.area.height / 2, 0);
     }
 
     void ConnectRooms(BSPNode node) 
@@ -205,16 +280,16 @@ public class BSPLevelGenerator : MonoBehaviour {
                     closest.connectedRooms.Add(room);
                     visited.Add(room);
                     queue.Enqueue(room);
-               
                 }
             }
         }
     }
+
     void SpawnEnemies()
     {
         foreach (Room room in roomInstances)
         {
-            if (room.enemiesInRoom == null || room.enemySpawnPoints.Count == 0)
+            if (room.enemiesInRoom == null || room.enemySpawnPoints == null || room.enemySpawnPoints.Count == 0)
                 continue;
 
             int enemiesToSpawn = Random.Range(minEnemiesPerRoom, Mathf.Min(maxEnemiesPerRoom + 1, room.enemySpawnPoints.Count + 1));
