@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [Header("Invulnerability")]
     [SerializeField] private bool useInvulnerability = false;
     [SerializeField] private float invulnerabilityDuration = 1f;
+    
 
     private int currentHealth;
     private float invulnerabilityTimer = 0f;
@@ -57,4 +58,7 @@ public class Health : MonoBehaviour
         Debug.Log($"{gameObject.name} died.");
         Destroy(gameObject);
     }
+
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
 }
