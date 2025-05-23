@@ -862,6 +862,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5566594596184535865, guid: 633615698ac2f624b92a263547042534, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5566594596184535868, guid: 633615698ac2f624b92a263547042534, type: 3}
       propertyPath: m_Name
       value: FadeCanvas
