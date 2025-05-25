@@ -53,11 +53,18 @@ public class Health : MonoBehaviour
         return invulnerabilityTimer > 0f;
     }
 
-    private void Die()
+   private void Die()
+{
+
+    if (CompareTag("MainCharacter"))
     {
-        Debug.Log($"{gameObject.name} died.");
+        GameOverManager.Instance.ShowGameOverScreen();
+    }
+    else
+    {
         Destroy(gameObject);
     }
+}
 
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
