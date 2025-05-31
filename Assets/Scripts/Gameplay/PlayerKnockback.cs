@@ -27,7 +27,10 @@ public class PlayerKnockback : MonoBehaviour
         knockbackVelocity = force;
         knockbackTimer = duration;
 
-        animator.SetTrigger("Hurt");
+        if(animator!=null)
+        {
+            animator.SetTrigger("Hurt");
+        }
     }
 
     private void FixedUpdate()

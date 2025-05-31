@@ -16,6 +16,8 @@ public class Portal : MonoBehaviour
 
     private GameObject currentMenu;
 
+    private PlayerAttack playerAttack;
+
     public void Initialize(Room room)
     {
         currentRoom = room;
@@ -46,6 +48,7 @@ public class Portal : MonoBehaviour
         if (currentRoom.connectedRooms.Count == 0) return;
 
         currentMenu = Instantiate(selectionMenuPrefab, roomSelectionCanvas.transform);
+        playerAttack.enabled = false;
 
         RectTransform rt = currentMenu.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2(0, 0);
@@ -67,6 +70,7 @@ public class Portal : MonoBehaviour
 
             newButton.GetComponent<Button>().onClick.AddListener(() =>
             {
+                playerAttack.enabled = true;
                 StartCoroutine(TeleportWithFade(targetRoom));
                 Destroy(currentMenu);
             });
@@ -100,6 +104,7 @@ public class Portal : MonoBehaviour
         if (other.CompareTag("MainCharacter"))
         {
             playerInsidePortal = other.transform;
+            playerAttack = other.GetComponent<PlayerAttack>();
         }
     }
 
@@ -108,6 +113,7 @@ public class Portal : MonoBehaviour
         if (other.CompareTag("MainCharacter") && playerInsidePortal == other.transform)
         {
             playerInsidePortal = null;
+            playerAttack.enabled = true;
 
             if (currentMenu != null)
             {
