@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 4751812973797363406}
   - component: {fileID: -1301790995837653693}
   - component: {fileID: -6024230634684875237}
+  - component: {fileID: -2241202776454141289}
+  - component: {fileID: 557054697116536371}
   m_Layer: 7
   m_Name: playerPrefab
   m_TagString: MainCharacter
@@ -80,12 +82,12 @@ SpriteRenderer:
   m_SortingLayerID: -2033749217
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1254280822, guid: a997bcf59215431468375787f0cfecee, type: 3}
+  m_Sprite: {fileID: -2046584431, guid: 8f7d869ade672d34eba73b2d8f800d1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 2.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -129,8 +131,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 4, y: 2.125}
+    newSize: {x: 4, y: 2.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -154,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29465c07e9af544418820c0ca322ed32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 9
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -231,4 +233,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 4751812973797363406}
-  hud: {fileID: 0}
+--- !u!95 &-2241202776454141289
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7489885377612582556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57b88001e7bd0c84fb8b63f3c5e5d0d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &557054697116536371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7489885377612582556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ee8270182fab345b1359af70a103bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

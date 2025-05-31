@@ -12,10 +12,13 @@ public class PlayerKnockback : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     private RaycastHit2D[] castResults = new RaycastHit2D[5];
 
+    private Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
     }
 
     public void ApplyKnockback(Vector2 force, float duration)
@@ -23,6 +26,8 @@ public class PlayerKnockback : MonoBehaviour
         isKnockedBack = true;
         knockbackVelocity = force;
         knockbackTimer = duration;
+
+        animator.SetTrigger("Hurt");
     }
 
     private void FixedUpdate()

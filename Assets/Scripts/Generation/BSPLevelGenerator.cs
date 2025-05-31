@@ -36,6 +36,7 @@ public class BSPLevelGenerator : MonoBehaviour {
     {
         RectInt rootRect = new RectInt(0, 0, mapWidth, mapHeight);
         rootNode = new BSPNode { area = rootRect };
+
         leaves = new List<BSPNode>();
 
         SplitUntilMinRooms(rootNode);
@@ -68,7 +69,8 @@ public class BSPLevelGenerator : MonoBehaviour {
         }
     }
 
-    bool SplitNode(BSPNode node) {
+    bool SplitNode(BSPNode node) 
+    {
         if (node.area.width < minRoomSize * 2 || node.area.height < minRoomSize * 2)
             return false;
 
@@ -122,6 +124,7 @@ public class BSPLevelGenerator : MonoBehaviour {
         return;
     }
 
+    //Alegerea și instanțierea camerei de start
     BSPNode startingLeaf = leaves[leaves.Count - 1];
     GameObject startingPrefab = startingRoomPrefabs[Random.Range(0, startingRoomPrefabs.Length)];
     GameObject startingGO = Instantiate(startingPrefab, GetRoomPosition(startingLeaf), Quaternion.identity);
@@ -133,6 +136,7 @@ public class BSPLevelGenerator : MonoBehaviour {
     roomInstances.Add(startingRoom);
     startingLeaf.roomPosition = startingRoom.center;
 
+    //Instanțierea jucătorului
     if (playerPrefab != null)
     {
         GameObject player = Instantiate(playerPrefab, startingGO.transform.position, Quaternion.identity);
@@ -142,6 +146,7 @@ public class BSPLevelGenerator : MonoBehaviour {
             confinerHandler.SetConfinerBounds(startingRoom.GetComponent<PolygonCollider2D>());
     }
 
+    //Rezervarea camerelor speciale
     int totalLeaves = leaves.Count;
     int availableLeaves = totalLeaves - 1;
     int totalSpecialRooms = numberOfBossRooms + numberOfPowerUpRooms;
@@ -246,7 +251,8 @@ public class BSPLevelGenerator : MonoBehaviour {
         visited.Add(start);
         queue.Enqueue(start);
 
-        while (queue.Count > 0) {
+        while (queue.Count > 0) 
+        {
             Room current = queue.Dequeue();
             foreach (Room neighbor in current.connectedRooms) 
             {
@@ -268,7 +274,8 @@ public class BSPLevelGenerator : MonoBehaviour {
                 foreach (Room connected in visited) 
                 {
                     float dist = Vector2.Distance(room.center, connected.center);
-                    if (dist < minDistance) {
+                    if (dist < minDistance) 
+                    {
                         minDistance = dist;
                         closest = connected;
                     }

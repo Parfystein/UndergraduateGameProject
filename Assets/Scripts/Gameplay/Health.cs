@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
@@ -8,13 +8,15 @@ public class Health : MonoBehaviour
     [SerializeField] private bool useInvulnerability = false;
     [SerializeField] private float invulnerabilityDuration = 1f;
     
-
     private int currentHealth;
     private float invulnerabilityTimer = 0f;
+
+    private Animator animator;
 
     private void Awake()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -54,17 +56,24 @@ public class Health : MonoBehaviour
     }
 
    private void Die()
-{
-
-    if (CompareTag("MainCharacter"))
     {
+
+        if (CompareTag("MainCharacter"))
+        {
+            animator.SetTrigger("Death");
+            StartCoroutine(ShowGameOverAfterDelay(1.0f));
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    private IEnumerator ShowGameOverAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         GameOverManager.Instance.ShowGameOverScreen();
     }
-    else
-    {
-        Destroy(gameObject);
-    }
-}
 
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
