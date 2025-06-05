@@ -300,4 +300,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6122947356825323721, guid: ccb68e71bb1a8fc4f96ca8650a31a99d, type: 3}
   firePoint: {fileID: 2895372435441309517}
-  projectileCooldown: 0.5
+  attackCooldown: 0.5
+  attackSFX: {fileID: 8300000, guid: be314b605560996478f901e200119590, type: 3}

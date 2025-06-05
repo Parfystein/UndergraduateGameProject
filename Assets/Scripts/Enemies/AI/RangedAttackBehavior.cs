@@ -11,6 +11,7 @@ public class RangedAttackBehavior : EnemyBehavior
 
     private readonly Dictionary<GameObject, float> shootTimers = new();
     private readonly Dictionary<GameObject, bool> hasShotOnce = new();
+    public AudioClip shootSFX;
 
     public override void Execute(EnemyAIController controller)
     {
@@ -67,6 +68,15 @@ public class RangedAttackBehavior : EnemyBehavior
         if (proj != null)
         {
             proj.SetDirection(direction);
+        }
+
+        if (shootSFX != null)
+        {
+            SFXPlayer sfxPlayer = controller.GetComponentInChildren<SFXPlayer>();
+            if (sfxPlayer != null)
+            {
+                sfxPlayer.PlaySFX(shootSFX);
+            }
         }
 
 

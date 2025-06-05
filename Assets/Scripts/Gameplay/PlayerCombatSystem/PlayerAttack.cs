@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+
     }
 
     private void Start()

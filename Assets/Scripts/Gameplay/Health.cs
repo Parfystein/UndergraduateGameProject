@@ -12,11 +12,15 @@ public class Health : MonoBehaviour
     private float invulnerabilityTimer = 0f;
 
     private Animator animator;
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip hurtSFX;
+    private SFXPlayer sfxPlayer;
 
     private void Awake()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        sfxPlayer = GetComponentInChildren<SFXPlayer>();
     }
 
     private void Update()
@@ -38,6 +42,11 @@ public class Health : MonoBehaviour
 
         currentHealth -= amount;
         Debug.Log($"{gameObject.name} took {amount} damage. Current health: {currentHealth}");
+
+        if (hurtSFX != null && sfxPlayer != null)
+        {
+            sfxPlayer.PlaySFX(hurtSFX);
+        }
 
         if (useInvulnerability)
         {

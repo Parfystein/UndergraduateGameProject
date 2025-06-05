@@ -18,19 +18,24 @@ public class Portal : MonoBehaviour
 
     private PlayerAttack playerAttack;
 
+    [Header("Sound Effects")]
+    public AudioClip teleportSFX;
+    private SFXPlayer sfxPlayer;
+
     public void Initialize(Room room)
     {
         currentRoom = room;
     }
     private void Start()
-{
+    {
     roomSelectionCanvas = GameObject.Find("RoomSelectionCanvas")?.GetComponent<Canvas>();
 
     if (roomSelectionCanvas == null)
     {
         Debug.LogError("RoomSelectionCanvas not found in scene.");
     }
-}
+    sfxPlayer = GetComponentInChildren<SFXPlayer>();
+    }
 
     private void Update()
     {
@@ -91,9 +96,14 @@ public class Portal : MonoBehaviour
         else
             playerInsidePortal.position = targetPos;
 
+        if (teleportSFX != null && sfxPlayer != null)
+        {
+            sfxPlayer.PlaySFX(teleportSFX);
+        }
+
         var confinerHandler = Camera.main.GetComponent<CameraConfinerHandler>();
         if (confinerHandler != null)
-        confinerHandler.SetConfinerBounds(targetRoom.roomBoundsCollider);
+            confinerHandler.SetConfinerBounds(targetRoom.roomBoundsCollider);
         yield return new WaitForSeconds(0.4f);
 
         yield return StartCoroutine(ScreenFader.Instance.FadeInFromBlack());
