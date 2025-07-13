@@ -92,7 +92,8 @@ public class BSPLevelGenerator : MonoBehaviour {
             {
                 area = new RectInt(node.area.x, node.area.y + splitY, node.area.width, node.area.height - splitY)
             };
-        } else 
+        } 
+        else 
         {
             int splitX = Random.Range(minRoomSize, node.area.width - minRoomSize);
             node.left = new BSPNode 

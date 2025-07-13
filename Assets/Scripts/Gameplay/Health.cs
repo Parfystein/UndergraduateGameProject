@@ -74,6 +74,8 @@ public class Health : MonoBehaviour
         }
         else
         {
+            if (GameVictoryManager.Instance != null)
+                GameVictoryManager.Instance.RegisterEnemyDefeat();
             Destroy(gameObject);
         }
     }
