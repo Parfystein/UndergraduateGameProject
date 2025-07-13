@@ -8,10 +8,6 @@ public class MainMenuButtons : MonoBehaviour
         SceneManager.LoadScene("Level1"); 
     }
 
-    public void OpenStats()
-    {
-        Debug.Log("Stats screen not implemented yet.");
-    }
 
     public void QuitGame()
     {

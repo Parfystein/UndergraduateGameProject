@@ -74,9 +74,14 @@ public class Health : MonoBehaviour
         }
         else
         {
-            if (GameVictoryManager.Instance != null)
-                GameVictoryManager.Instance.RegisterEnemyDefeat();
-            Destroy(gameObject);
+
+        var tracker = GetComponent<EnemyDeathTracker>();
+        if (tracker == null)
+        {
+            Debug.LogError($"Prefab-ul '{name}' NU are EnemyDeathTracker atasat!");
+            return;
+        }
+        tracker.HandleDeath();
         }
     }
     

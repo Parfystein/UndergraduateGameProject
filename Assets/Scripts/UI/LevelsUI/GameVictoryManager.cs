@@ -43,6 +43,8 @@ public class GameVictoryManager : MonoBehaviour
 
     public void ShowVictoryScreen()
     {
+
+        StatsManager.Instance.SaveSessionStats();
         Time.timeScale = 0f;
         victoryUI.SetActive(true);
     }

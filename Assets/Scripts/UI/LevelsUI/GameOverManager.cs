@@ -21,6 +21,7 @@ public class GameOverManager : MonoBehaviour
 
     public void ShowGameOverScreen()
     {
+        StatsManager.Instance.SaveSessionStats();
         Time.timeScale = 0f;
         gameOverUI.SetActive(true);
     }
